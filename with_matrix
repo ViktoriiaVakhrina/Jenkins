@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    matrix {
+        axes{
+            axis{
+                name: 'PLATFORM'
+                values: 'Mac OS', 'Windows', 'Linux' 
+            }
+            axis {
+                name: 'BROWSER'
+                values: 'Safari', 'Chrome', 'Opera'
+            }
+        }
+    }
+    stages {
+        stage {
+            steps {
+                echo " Testng for $BROWSER on $PLATFORM"
+            }
+        }
+    }
+}
