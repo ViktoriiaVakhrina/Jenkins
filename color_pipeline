@@ -1,17 +1,13 @@
-// This shows a simple build wrapper example, using the AnsiColor plugin.
 pipeline {
-    agent {
-        node {
-    // This displays colors using the 'xterm' ansi color map.
-            ansiColor('xterm') 
+    agent any
+    options {
+        ansiColor('xterm')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
             }
         }
-    stages {
-            stage ('my_action'){
-                steps {
-                // Just some echoes to show the ANSI color.
-                        echo "\u001B[31mI'm Red\u001B[0m Now not"
-                }
-                }
-        }
+    }
 }
